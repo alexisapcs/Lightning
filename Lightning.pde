@@ -1,22 +1,22 @@
-int startX = 0;
-int startY = 150;
-int endX = 0;
-int endY = 150;
+int startX = 175;
+int startY = 600;
+int endX = width;
+int endY = 0;
 
 void setup() {
-  frameRate(10);
   size(600,750);
   fill(0);
-  //background(#000000);
+  background(3, 18, 61);
 }
 
 void draw() {
+	bg();
 	strokeWeight((int)(Math.random()*3)+1);
-	stroke(((int)(Math.random()*255)+1), ((int)(Math.random()*255)+1), ((int)(Math.random()*255)+1));
+	stroke(((int)(Math.random()*10)+245), ((int)(Math.random()*10)+245), ((int)(Math.random()*150)+100), ((int)(Math.random()*55)+200));
 
-	while(endX <= width){
-		endX = startX + ((int)(Math.random()*10));
-		endY = startY + ((int)(Math.random()*19)-9);
+	while(endY >= 0){
+		endX = startX + ((int)(Math.random()*13)-3);
+		endY = startY - ((int)(Math.random()*15));
 		line(startX, startY, endX, endY);
 		startX = endX;
 		startY = endY;
@@ -25,10 +25,10 @@ void draw() {
 }
 
 void mousePressed() {
-	startX = 0;
-	startY = 150;
-	endX = 0;
-	endY = 150;
+	startX = 175;
+	startY = 600;
+	endX = width;
+	endY = 0;
 }
 
 void hammer() {
@@ -37,8 +37,18 @@ void hammer() {
 	noStroke();
 	fill(117, 82, 7);
 	ellipse(50, 75, 15, 125);
-	strokeWeight(3);
-	stroke(255, ((int)(Math.random()*255)+1), ((int)(Math.random()*255)+1));
+	strokeWeight(2);
+	stroke(255, 255, ((int)(Math.random()*150)+100));
 	fill(200);
 	rect(0, 0, 100, 40);
+}
+
+void bg(){
+	fill(3, 18, 61, 20);
+	noStroke();
+	rect(0, 0, width, height);
+}
+
+void clouds(){
+	ellipse(400, 50, 50, 50);
 }
