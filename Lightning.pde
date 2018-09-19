@@ -2,6 +2,7 @@ int startX = 175;
 int startY = 600;
 int endX = width;
 int endY = 0;
+int cloudColor = (int)(Math.random()*70+60);
 
 void setup() {
   size(600,750);
@@ -22,9 +23,11 @@ void draw() {
 		startY = endY;
 	}
 	hammer();
+	clouds();
 }
 
 void mousePressed() {
+	cloudColor = (int)(Math.random()*70+60);
 	startX = 175;
 	startY = 600;
 	endX = width;
@@ -32,6 +35,7 @@ void mousePressed() {
 }
 
 void hammer() {
+	pushMatrix();
 	translate(150, 550);
 	rotate(0.785);
 	noStroke();
@@ -40,15 +44,27 @@ void hammer() {
 	strokeWeight(2);
 	stroke(255, 255, ((int)(Math.random()*150)+100));
 	fill(200);
-	rect(0, 0, 100, 40);
+	rect(0, 0, 100, 40,7);
+	popMatrix();
 }
 
 void bg(){
-	fill(3, 18, 61, 20);
+	fill(3, 18, 61, 35);
 	noStroke();
 	rect(0, 0, width, height);
 }
 
 void clouds(){
-	ellipse(400, 50, 50, 50);
+	fill(cloudColor, cloudColor, cloudColor);
+
+	noStroke();
+	ellipse(width/2, 50, width, 70);
+	ellipse(28, 60, 60, 40);
+	ellipse(60, 80, 50, 50);
+	ellipse(100, 90, 70, 50);
+	ellipse(130, 85, 50, 50);
+	ellipse(400, 90, 50, 50);
+	ellipse(400, 90, 50, 50);
+	ellipse(400, 90, 50, 50);
+	ellipse(400, 90, 50, 50);
 }
